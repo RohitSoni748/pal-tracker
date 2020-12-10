@@ -1,6 +1,7 @@
 package io.pivotal.pal.tracker;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -17,4 +18,6 @@ public class PalTrackerApplication {
     @Bean
     TimeEntryRepository timeEntryRepository(DataSource  dataSource) {return new JdbcTimeEntryRepository(dataSource);}
 
+    @Bean
+    InfoContributor InfoContributor() {return new TotalUsersInfoContributor();}
 }
